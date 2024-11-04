@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulačka BMI</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input { margin: 10px; padding: 8px; }
+        button { padding: 10px 20px; }
+        .result { font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+<h1>Vítejte v kalkulačce BMI</h1>
+
+<p>Zadejte prosím svoji výšku v centimetrech:</p>
+<input type="number" id="vyska" placeholder="Výška (cm)" required>
+
+<p>Zadejte prosím svoji váhu v kilogramech:</p>
+<input type="number" id="vaha" placeholder="Váha (kg)" required>
+
+<button onclick="vypocitejBMI()">Vypočítat BMI</button>
+
+<div class="result" id="result"></div>
+
+<script>
+    function vypocitejBMI() {
+        const vyska = parseFloat(document.getElementById('vyska').value);
+        const vaha = parseFloat(document.getElementById('vaha').value);
+        const resultElement = document.getElementById('result');
+
+        // Kontrola platnosti výšky
+        if (isNaN(vyska) || vyska <= 0) {
+            resultElement.textContent = "Výška musí být větší než nula.";
+            return;
+        }
+
+        // Kontrola platnosti váhy
+        if (isNaN(vaha) || vaha <= 0) {
+            resultElement.textContent = "Váha musí být větší než nula.";
+            return;
+        }
+
+        // Převod centimetrů na metry
+        const vyskaVMetrech = vyska / 100;
+
+        // Výpočet BMI
+        const VypocetBmi = vaha / (Math.pow(vyskaVMetrech, 2));
+
+        // Zobrazení výsledku
+        resultElement.textContent = `Tvoje BMI je: ${VypocetBmi.toFixed(2)}`;
+    }
+</script>
+</body>
+</html>
