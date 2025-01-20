@@ -53,6 +53,50 @@ public class BmiKalkulacka {
         System.out.println(VyskaVMetrech);
         */
 
-        System.out.printf("Tvoje BMI je: %.2f", VypocetBmi);
+        System.out.printf("Tvoje BMI je: %.2f - ", VypocetBmi);
+
+        int kategorie = 0;
+
+        if (VypocetBmi <= 18.49) {
+            kategorie = 1;
+        } else if ((VypocetBmi >= 18.5) && (VypocetBmi <= 24.9)) {
+            kategorie = 2;
+
+        } else if ((VypocetBmi >= 25) && (VypocetBmi <= 29.9)) {
+            kategorie = 3;
+
+        } else if ((VypocetBmi >= 30) && (VypocetBmi <= 34.9)) {
+            kategorie = 4;
+
+        } else if (VypocetBmi >= 35) {
+            kategorie = 5;
+
+        }
+
+        switch (kategorie) {
+            case 1:
+                System.out.println("Jsi podvyživený");
+                break;
+            default:
+                System.out.println("Nesprávný údaj");
+
+            case 2:
+                System.out.println("Máš normální váhu");
+                break;
+
+            case 3:
+                System.out.println("Máš nadváhu");
+                break;
+
+            case 4:
+                System.out.println("Máš obezitu 1. stupně!");
+                break;
+
+            case 5:
+                System.out.println("Máš obezitu 2. stupně!");
+                break;
+        }
+
     }
 }
+
